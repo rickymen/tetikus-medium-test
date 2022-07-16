@@ -19,4 +19,17 @@ public class TetikusCoreRunner extends TetikusBaseRunner {
         loginPage.fillTwitterLoginCredentials(username, password);
         loginPage.waitForHomeTitle();
     }
+
+
+    @Test
+    public void searchForArticle() {
+        String desiredArticle = "spring boot";
+        String expectedTitle = "How to scale Microservices with Message Queues, Spring Boot, and Kubernetes";
+
+        homePage.openPage();
+
+        homePage.searchForArticle(desiredArticle);
+
+        assertThat(homePage.getFirstArticleTitle(), equalTo(expectedTitle));
+    }
 }
